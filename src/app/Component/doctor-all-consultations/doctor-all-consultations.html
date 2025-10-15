@@ -1,0 +1,21 @@
+<p>doctor-all-consultations works!</p>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Consultation ID</th>
+                <th>Patient Name</th>
+                <th>Consultation Date</th>
+                <th>doctorId</th>
+                <th>currentStatus</th>
+            </tr>
+            <tr *ngFor="let consultation of consultations">
+                <td>{{ consultation.consultId }}</td>
+                <td>{{ consultation.patientId }}</td>
+                <td>{{ consultation.createdOn }}</td>
+                <td>{{ consultation.doctorId }}</td>
+                <td>{{ consultation.currentStatus }}</td>
+            </tr>
+        </thead>
+    </table>
+</div>

@@ -10,6 +10,7 @@ import { FrontdeskDashboardComponent } from './Component/frontdesk-dashboard-com
 import { AdminDashboardComponent } from './Component/admin-dashboard-component/admin-dashboard-component';
 import { Unauthorized } from './Component/unauthorized/unauthorized';
 import { DoctorDashboardComponent } from './Component/doctor-dashboard-component/doctor-dashboard-component';
+import { DoctorAllConsultations } from './Component/doctor-all-consultations/doctor-all-consultations';
 
 export const routes: Routes = [
     {   path: '',
@@ -50,6 +51,14 @@ export const routes: Routes = [
         canActivate : [AuthGuard, RoleGuard],
         data : {
             roles : ['Admin']
+        }
+    },
+    {
+        path : 'doctors/consultations',
+        component : DoctorAllConsultations,
+        canActivate : [AuthGuard, RoleGuard],
+        data : {
+            roles : ['Doctor']
         }
     },
     {
