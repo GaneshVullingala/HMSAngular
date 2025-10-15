@@ -1,0 +1,110 @@
+
+<div class="container mt-3">
+    <div *ngIf="loading" class="alert alert-info">Loading....</div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+<div class="text-end">
+<button class="btn btn-dark" (click)="openModal()">+ Add New</button>
+</div>
+<table *ngIf="!loading && !error" class="table table-bordered table-striped mt-3">
+    <thead class="table-dark table-primary">
+        <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Qualification</th>
+        <th>Speciality</th>
+        <th>Experience (yrs)</th>
+        <th>Address</th>
+        <th>Pincode</th>
+        <th>Created On</th>
+        <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let frontdesk of frontdeskList">
+             <td>{{ frontdesk.frontDeskId }}</td>
+            <td>{{ frontdesk.fullName }}</td>
+            <td>{{ frontdesk.phone }}</td>
+            <td>{{ frontdesk.email }}</td>
+            <td>{{ frontdesk.qualification }}</td>
+            <td>{{ frontdesk.speciality }}</td>
+            <td>{{ frontdesk.experience }}</td>
+            <td>{{ frontdesk.address }}</td>
+            <td>{{ frontdesk.pincode }}</td>
+            <td>{{ frontdesk.createdOn | date: 'short' }}</td>
+            <td>
+                <div class="d-flex">
+                <button class="btn btn-info mr-2">Edit</button>
+                <button class="btn btn-danger ml-3">Delete</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+ <div class="modal fade show d-block" tabindex="-1" *ngIf="showModal">
+    <div class="modal-dialog modal-dialog-centered ">
+       <div class="modal-content shadow-lg">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title">Add New FrontDesk</h5>
+          <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeModal()"></button>
+        </div>
+        <div class="model-body p-3 modal-dialog-scrollable">
+          <form (ngSubmit)="onSubmit()" #frontdeskForm="ngForm">
+            <div class="row">
+                <div class="col-6 col-6 mb-2">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="Enter full name"  name="fullName" [(ngModel)]="newFrontDesk.fullName" required>
+                </div>
+                <div class="col-6 mb-2">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="text" id="phone" class="form-control" placeholder="Enter phone number"  name="phone" [(ngModel)]="newFrontDesk.phone" required>
+                </div>
+                <div class="col-6 mb-2">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" class="form-control" name="email" placeholder="Enter Email Address" [(ngModel)]="newFrontDesk.email">
+                </div>
+                <div class="col-6 mb-2">
+                    <label for="qualification" class="form-label">Qualification</label>
+                    <input id="qualification" type="text" class="form-control" name="qualification" [(ngModel)]="newFrontDesk.qualification">
+                </div>
+                <div class="col-6 mb-2">
+                    <label for="speciality" class="form-label">Speciality</label>
+                    <input id="speciality" type="text" class="form-control" name="speciality" [(ngModel)]="newFrontDesk.speciality">
+                </div>
+                <div class="col-6 mb-2">
+                    <label for="experience" class="form-label">Experience (years)</label>
+                    <input id="experience" type="number" class="form-control" name="experience" [(ngModel)]="newFrontDesk.experience">
+                </div>
+                <div class="col-6 mb-2">
+                    <label class="form-label" for="address">Address</label>
+                    <textarea id="address" class="form-control" [(ngModel)]="newFrontDesk.address" name="address"></textarea>
+                </div>
+
+                <div class="col-6 mb-2">
+                    <label class="form-label" for="pincode">Pincode</label>
+                    <input id="pincode" type="text" class="form-control" [(ngModel)]="newFrontDesk.pincode" name="pincode" />
+                </div>
+                <div class="col-6 mb-2">
+                    <label class="form-label" for="photo">Photo</label>
+                    <input id="photo" type="file" class="form-control" (change)="onFileSelected($event, 'photo')" />
+                </div>
+                <div class="col-6 mb-2">
+                    <label class="form-label" for="doc">Document</label>
+                    <input id="doc" type="file" class="form-control" (change)="onFileSelected($event, 'doc')" />
+                </div>
+            </div>
+          </form>
+          <!-- Save / Cancel Buttons -->
+        <div class="modal-footer">
+            <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+            <button class="btn btn-success" (click)="onSubmit()" [disabled]="saving">
+                {{ saving ? 'Saving...' : 'Save' }}
+            </button>
+        </div>
+       </div>
+       </div>
+    </div>
+</div>
