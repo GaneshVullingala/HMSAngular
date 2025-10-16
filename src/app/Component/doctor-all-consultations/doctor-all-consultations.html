@@ -1,21 +1,38 @@
-<p>doctor-all-consultations works!</p>
+<div class="container mt-3">
 <div>
-    <table>
-        <thead>
+    <button (click)="getAllConsultationsByStatus('All')" [ngClass]="{'btn btn-light' : selectedStatus === 'All', 'btn btn-dark' : selectedStatus !== 'All'}">Get All Consultations</button>
+    <button (click)="getAllConsultationsByStatus('pending')" [ngClass]="{'btn btn-light' : selectedStatus === 'pending', 'btn btn-dark' : selectedStatus !== 'pending'}">Get All PENDING Consultations</button>
+    <button (click)="getAllConsultationsByStatus('completed')" [ngClass]="{'btn btn-light' : selectedStatus === 'completed', 'btn btn-dark' : selectedStatus !== 'completed'}">Get All COMPLETED Consultations</button>
+</div>
+<div>
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark table-primary">
             <tr>
                 <th>Consultation ID</th>
                 <th>Patient Name</th>
                 <th>Consultation Date</th>
                 <th>doctorId</th>
-                <th>currentStatus</th>
+                <th>Fee</th>
+                <th>current Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="consultations.length === 0">
+                <td colspan="6">No consultations found.</td>
             </tr>
             <tr *ngFor="let consultation of consultations">
                 <td>{{ consultation.consultId }}</td>
                 <td>{{ consultation.patientId }}</td>
                 <td>{{ consultation.createdOn }}</td>
                 <td>{{ consultation.doctorId }}</td>
+                <td>{{ consultation.fee }}</td>
                 <td>{{ consultation.currentStatus }}</td>
+                <td>
+                    <button (click)="goDetailConsultation(consultation)">Update/View</button>
+                </td>
             </tr>
-        </thead>
+        </tbody>
     </table>
-</div>
+</div> 
+    </div>

@@ -7,9 +7,19 @@ import { DoctorAllConsultationsModel } from '../models/doctorallconsultations.mo
 })
 export class DoctorCosnultationService {
     private apiUrl = 'https://localhost:7239/api/Doctor/consultations';
+    private pendingApiUrl = 'https://localhost:7239/api/Doctor/consultations/pending';
+    private completedApiUrl = 'https://localhost:7239/api/Doctor/consultations/completed';
     constructor(private http: HttpClient) { }
 
     getConsultations() : Observable<DoctorAllConsultationsModel[]>{
         return this.http.get<DoctorAllConsultationsModel[]>(this.apiUrl);
+    }
+
+    getPendingConsultations() : Observable<DoctorAllConsultationsModel[]>{
+        return this.http.get<DoctorAllConsultationsModel[]>(this.pendingApiUrl);
+    }
+
+    getCompletedConsultations() : Observable<DoctorAllConsultationsModel[]>{
+        return this.http.get<DoctorAllConsultationsModel[]>(this.completedApiUrl);
     }
 }
