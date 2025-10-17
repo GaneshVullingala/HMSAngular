@@ -11,6 +11,7 @@ import { AdminDashboardComponent } from './Component/admin-dashboard-component/a
 import { Unauthorized } from './Component/unauthorized/unauthorized';
 import { DoctorDashboardComponent } from './Component/doctor-dashboard-component/doctor-dashboard-component';
 import { DoctorAllConsultations } from './Component/doctor-all-consultations/doctor-all-consultations';
+import {DoctorUpdateConsultation} from './Component/doctor-update-consultation/doctor-update-consultation';
 
 export const routes: Routes = [
     {   path: '',
@@ -64,6 +65,11 @@ export const routes: Routes = [
     {
         path : 'unauthorized',
         component : Unauthorized
+    },
+    {
+        path : 'doctor/consultation-detail/:id',
+        component : DoctorUpdateConsultation,
+        canActivate : [AuthGuard, RoleGuard],
     },
       { path: '**', redirectTo: '' } // catch-all
 ];

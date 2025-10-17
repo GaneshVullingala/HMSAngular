@@ -3,6 +3,7 @@ import { DoctorAllConsultationsModel } from '../../models/doctorallconsultations
 import { DoctorCosnultationService } from '../../services/doctor-cosnultation-service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-doctor-all-consultations',
@@ -15,7 +16,7 @@ export class DoctorAllConsultations implements OnInit {
   selectedStatus = 'All';
   isloading = false;
   consultations: DoctorAllConsultationsModel[] = [];
-  constructor(private consultationService: DoctorCosnultationService) { }
+  constructor(private consultationService: DoctorCosnultationService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllConsultationsByStatus('All');
@@ -65,6 +66,7 @@ export class DoctorAllConsultations implements OnInit {
   }
 
   goDetailConsultation(consultation: DoctorAllConsultationsModel){
-    
+     // Navigate using consultation ID
+     this.router.navigate(['/doctor/consultation-detail', consultation.consultId]);  
   }
 }

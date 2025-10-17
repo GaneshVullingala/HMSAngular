@@ -1,6 +1,6 @@
 <div class="container mt-3">
 <div>
-    <button (click)="getAllConsultationsByStatus('All')" [ngClass]="{'btn btn-light' : selectedStatus === 'All', 'btn btn-dark' : selectedStatus !== 'All'}">Get All Consultations</button>
+    <button (click)="getAllConsultationsByStatus('All')" [ngClass]="{'btn btn-primary' : selectedStatus === 'All', 'btn btn-dark' : selectedStatus !== 'All'}">Get All Consultations</button>
     <button (click)="getAllConsultationsByStatus('pending')" [ngClass]="{'btn btn-light' : selectedStatus === 'pending', 'btn btn-dark' : selectedStatus !== 'pending'}">Get All PENDING Consultations</button>
     <button (click)="getAllConsultationsByStatus('completed')" [ngClass]="{'btn btn-light' : selectedStatus === 'completed', 'btn btn-dark' : selectedStatus !== 'completed'}">Get All COMPLETED Consultations</button>
 </div>
