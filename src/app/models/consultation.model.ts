@@ -1,26 +1,30 @@
 export interface ConsultationModel{ 
-    ConsultId: number,
-PatientGenId: number;
-PatientId: number;
-PatientName: string;
+    consultId: number,
+patientGenId: number;
+patientId: number;
+patientName: string;
   doctorId: number;
-  DoctorName: string;
+  doctorName: string;
   frontDeskId: number;
-  FrontDeskName: string;
-  CurrentStatus: string;
-  Diognosis: string;
-  Problem: string;
-  Advice: string;
-  RevisitDate: string;  // ISO string e.g. '2025-10-10T00:00:00'
-  Fee: number;
-  ConsultationCreatedOn: string; // ISO string e.g. '2025-10-10T00:00:00'
-  PresentProblem: string;
-  PreviousHistory: string;
-  BP: string;
-  Sugar: string;
-  Height: string;
-  Weight: string;
-SPO2: string;
-VitalsCreatedOn: string; // ISO string e.g. '2025-10-10T00:00:00'
+  frontDeskName: string;
+  currentStatus: string;
+  gender: string;
+  age: string;
+  diognosis: string;
+  problem: string;
+  advice: string;
+  revisitDate: string;  // ISO string e.g. '2025-10-10T00:00:00'
+  fee: number;
+  consultationCreatedOn: string; // ISO string e.g. '2025-10-10T00:00:00'
+  presentProblem: string;
+  previousHistory: string;
+  bp: string;
+  sugar: string;
+  height: string;
+  weight: string;
+  spo2: string;
+  temperature: string;
+  bloodGroup: string;
+  vitalsCreatedOn: string; // ISO string e.g. '2025-10-10T00:00:00'
 
 }

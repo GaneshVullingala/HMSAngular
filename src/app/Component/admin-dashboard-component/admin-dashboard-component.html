@@ -1,1 +1,78 @@
-<p>admin-dashboard-component works!</p>
+<div class="container pt-5">
+    <div class="row align-items-stretch">
+      <div class="c-dashboardInfo col-6 col-lg-3 col-md-6">
+        <div class="wrap">
+          <h6 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Completed Consultations<svg
+              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+            </svg></h6><span class="hind-font caption-12 c-dashboardInfo__count">{{allCounts.completedConsultations }}</span>
+        </div>
+      </div>
+      <div class="c-dashboardInfo col-6 col-lg-3 col-md-6">
+        <div class="wrap">
+          <h6 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Pending Consultations<svg
+              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+            </svg></h6><span class="hind-font caption-12 c-dashboardInfo__count">{{allCounts.pendingConsultations }}</span>
+        </div>
+      </div>
+      <div class="c-dashboardInfo col-6 col-lg-3 col-md-6">
+        <div class="wrap">
+          <h6 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Patients<svg
+              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+            </svg></h6><span class="hind-font caption-12 c-dashboardInfo__count">{{allCounts.totalPatientRegistered }}</span>
+        </div>
+      </div>
+      <div class="c-dashboardInfo col-6 col-lg-3 col-md-6">
+        <div class="wrap">
+          <h6 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Total Revenue<svg
+              class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+            </svg></h6><span class="hind-font caption-12 c-dashboardInfo__count">{{allCounts.totalFeeCollected }}</span>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row align-items-stretch">
+<div class="d-flex">
+  <button (click)="getConsultationsByStatus('All')"
+        [ngClass]="['btn', selectedStatus === 'All' ? 'btn-primary' : 'btn-light']">
+  Get All Consultations
+</button>
+
+<button (click)="getConsultationsByStatus('pending')"
+        [ngClass]="['btn', selectedStatus === 'pending' ? 'btn-primary' : 'btn-light']">
+  Get All PENDING Consultations
+</button>
+
+<button (click)="getConsultationsByStatus('Consultation Completed')"
+        [ngClass]="['btn', selectedStatus === 'Consultation Completed' ? 'btn-primary' : 'btn-light']">
+  Get All COMPLETED Consultations
+</button>
+</div>
+        <table>
+            <thead class="table-header fixed-header">
+              
+                <tr>
+                    <th>Consultation ID</th>
+                    <th>Date</th>
+                    <th>Patient Name</th>
+                    <th>Doctor Name</th>
+                    <th>Fee</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+               <tr *ngIf="ConsultationsLists.length === 0">
+                    <td colspan="6">No recent consultations found.</td>
+               </tr>
+              
+                <tr *ngFor="let consultations of ConsultationsLists">
+                    <td>{{ consultations.consultId }}</td>
+                    <td>{{ consultations.consultationCreatedOn | date: 'short' }}</td>
+                    <td>{{ consultations.patientName }}</td>
+                    <td>{{ consultations.doctorName }}</td>
+                    <td>{{ consultations.fee }}</td>
+                    <td>{{ consultations.currentStatus }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>

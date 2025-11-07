@@ -1,8 +1,10 @@
-  <nav class="navbar navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-dark custom-navbar fixed-top" *ngIf="showNavbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Offcanvas dark navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <div class="navbar-brand" href=""><span>
+      <img src="logotwo.png" alt="Logo" width="110" class="d-inline-block align-text-top"/>
+    </span></div>
+    <button class="navbar-toggler menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      Menu<span><i class="bi bi-list"></i></span>
     </button>
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">

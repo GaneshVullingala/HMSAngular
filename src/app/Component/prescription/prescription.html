@@ -1,0 +1,73 @@
+<div id="{{elementId}}" class="pdf-container">
+  <div class="pdf-header text-center">
+    <img src="assets/logo.png" alt="Hospital Logo" height="60">
+    <h2>Eikon Hospital</h2>
+    <h5>Consultation Report</h5>
+  </div>
+
+  <hr>
+
+  <div class="patient-info">
+    <h5>Patient Information</h5>
+    <p><b>Name:</b> {{consultationData.patientName}}</p>
+    <p><b>Age:</b> {{consultationData.age}}</p>
+    <p><b>Gender:</b> {{consultationData.gender}}</p>
+    <p><b>Doctor:</b> {{consultationData.doctorName}}</p>
+    <p><b>Fee:</b> {{consultationData.fee}}</p>
+  </div>
+
+  <div class="vitals-info">
+    <h5>Patient Vitals</h5>
+    <table class="table table-bordered">
+      <tr>
+        <td><b>BP</b></td><td>{{consultationData.bp}}</td>
+        <td><b>Heart Rate</b></td><td>{{consultationData.spo2}}</td>
+      </tr>
+      <tr>
+        <td><b>Temperature</b></td><td>{{consultationData.temperature}}</td>
+        <td><b>Weight</b></td><td>{{consultationData.weight}}</td>
+      </tr>
+      <tr>
+        <td><b>Height</b></td><td>{{consultationData.height}}</td>
+        <td><b>Sugar</b></td><td>{{consultationData.sugar}}</td>
+      </tr>
+      <tr>
+        <td><b>Blood Group</b></td><td colspan="3">{{consultationData.bloodGroup}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="consultation-details">
+    <h5>Consultation Details</h5>
+    <p><b>Problem:</b> {{consultationData.problem}}</p>
+    <p><b>Diagnosis:</b> {{consultationData.diognosis}}</p>
+    <p><b>Advice:</b> {{consultationData.advice}}</p>
+    <p><b>Revisit Date:</b> {{consultationData.revisitDate | date:'mediumDate'}}</p>
+  </div>
+
+  <div class="prescriptions">
+    <h5>Prescriptions</h5>
+    <table class="table table-bordered">
+      <tr>
+        <th>Medicine</th>
+        <th>Morning</th>
+        <th>Afternoon</th>
+        <th>Night</th>
+        <th>Quantity</th>
+      </tr>
+      <tr *ngFor="let med of medicinelist">
+        <td>{{med.MedicineName}}</td>
+        <td>{{med.isMrngMedicine ? '✔' : ''}}</td>
+        <td>{{med.isANoonMedicine ? '✔' : ''}}</td>
+        <td>{{med.isNightMedicine ? '✔' : ''}}</td>
+        <td>{{med.MedicineQuantity}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <hr>
+  <div class="pdf-footer text-center">
+    <!-- <small>Generated on {{today | date:'medium'}}</small><br> -->
+    <small>© 2025 Eikon Hospital</small>
+  </div>
+</div>

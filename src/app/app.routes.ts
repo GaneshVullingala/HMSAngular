@@ -67,7 +67,15 @@ export const routes: Routes = [
         component : Unauthorized
     },
     {
-        path : 'doctor/consultation-detail/:id',
+        path : 'doctor/consultation-detail',
+        component : DoctorUpdateConsultation,
+        canActivate : [AuthGuard, RoleGuard],
+         data : {
+            roles : ['Doctor']
+        }
+    },
+    {
+        path : 'doctor/consultation-detail/:consultationId',
         component : DoctorUpdateConsultation,
         canActivate : [AuthGuard, RoleGuard],
     },

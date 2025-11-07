@@ -1,10 +1,52 @@
-<p>doctor-update-consultation works!</p>
+
 <div class="container">
   <h3>Consultation Details</h3>
-  <section class="card">
-    <h4>Patient Information</h4>
-    <p><b>Name:</b> {{consultationData?.PatientName}}</p>
-    <p><b>Age:</b> {{consultationData?.DoctorName}}</p>
-    <p><b>Gender:</b> {{consultationData?.FrondDeskName}}</p>
-  </section>
+  <section class="card p-2">
+    <h5>Patient Information</h5>
+   <div class="d-flex justify-content-between">
+      <p><b>Name:</b> {{consultationData.patientName}}</p>
+      <p><b>Age:</b> {{consultationData.age}}</p>
+      <p><b>Gender:</b> {{consultationData.gender}}</p>
+      <p><b>Doctor:</b> {{consultationData.doctorName}}</p>
+      <p><b>Front Desk:</b> {{consultationData.frontDeskName}}</p>
+      <p><b>Fee:</b> {{consultationData.fee}}</p>
+      <p><b></b></p>
+   </div>
+     <h5>Patient Vitals Information</h5>
+      <div class="d-flex justify-content-between">
+        <p><b>Blood Pressure:</b> {{consultationData.bp}}</p>
+        <p><b>Heart Rate:</b> {{consultationData.spo2}}</p>
+        <p><b>Temperature:</b> {{consultationData.temperature}}</p>
+        <p><b>Weight:</b> {{consultationData.weight}}</p>
+        <p><b>Height:</b> {{consultationData.height}}</p>
+        <p><b>Sugar:</b> {{consultationData.sugar}}</p>
+        <p><b>Blood Group:</b> {{consultationData.bloodGroup}}</p>
+      </div>
+      <h5>Update Consultation</h5>
+      <textarea [(ngModel)]="consultationData.diognosis" class="form-control mb-2" placeholder="Diognosis"></textarea>
+      <textarea [(ngModel)]="consultationData.problem" class="form-control mb-2" placeholder="Problem"></textarea>
+      <textarea [(ngModel)]="consultationData.advice" class="form-control mb-2" placeholder="Advice"></textarea>
+      <input [(ngModel)]="consultationData.revisitDate" class="form-control mb-2" placeholder="Revisit Date" type="date">
+      <h5>Prescriptions</h5>
+      <div *ngFor="let med of medicinelist">
+          <div class="d-flex gap-2 align-items-center"> 
+              <input type="text" [(ngModel)]="med.MedicineName" placeholder="medicine name" class="form-control">
+              <label><input type="checkbox" [(ngModel)]="med.isMrngMedicine"> Morning</label>
+              <label><input type="checkbox" [(ngModel)]="med.isANoonMedicine"> Afternoon</label>   
+               <label><input type="checkbox" [(ngModel)]="med.isNightMedicine"> Night</label>
+              <input type="text" [(ngModel)]="med.MedicineQuantity" placeholder="duration" class="form-control">
+              <button type="button" (click)="removeMedicine(med)" class="btn btn-danger">Remove</button>
+          </div>
+      </div>
+      <button type="button" (click)="addMedicine()" class="btn btn-dark">Add Medicine</button>
+      <button type="button" (click)="updateConsultation()" class="btn btn-dark">Update Consultation</button>
+    </section>
 </div>
+ 
+<app-prescription 
+  [consultationData]="consultationData" 
+  [medicinelist]="medicinelist" class="d-none"> 
+</app-prescription>
+<button class="btn btn-dark" (click)="pdfComponent.downloadPdf()">
+  Download PDF.
+</button> 
